@@ -1,0 +1,24 @@
+{
+  "name": "hexo-console-zhihu",
+  "version": "1.0.0",
+  "description": "A command-line tool to help publish Hexo articles on Zhihu.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chen-qingyu/hexo-console-zhihu.git"
+  },
+  "keywords": [
+    "console",
+    "markdown",
+    "zhihu"
+  ],
+  "author": "chen-qingyu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chen-qingyu/hexo-console-zhihu/issues"
+  },
+  "homepage": "https://github.com/chen-qingyu/hexo-console-zhihu#readme"
+}
