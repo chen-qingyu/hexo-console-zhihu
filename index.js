@@ -17,7 +17,10 @@ hexo.extend.console.register('zhihu', 'Run the hexo-console-zhihu plugin', {
     const posts = fs.readdirSync(postsDir);
 
     posts.forEach(post => {
-        if (path.basename(post).includes('zhihu.md')) { return; }
+        if (path.basename(post).includes('.zhihu.md')) {
+            return;
+        }
+
         if (path.extname(post) === '.md') {
             const postBaseName = path.basename(post, '.md');
 
@@ -37,8 +40,7 @@ hexo.extend.console.register('zhihu', 'Run the hexo-console-zhihu plugin', {
             content = content.replace(/\$(.*?)\$/g, '$$$$$1$$$$'); // $e$ -> $$e$$
             content = content.replace(/DOUBLE_DOLLAR_TEMP_TAG/g, '$$$$'); // DOUBLE_DOLLAR_TEMP_TAGeDOUBLE_DOLLAR_TEMP_TAG -> $$e$$
 
-            const newFileName = specificPost ? `${specificPost}.zhihu.md` : `${postBaseName}.zhihu.md`;
-            const newFilePath = path.join(postsDir, newFileName);
+            const newFilePath = path.join(postsDir, `${postBaseName}.zhihu.md`);
 
             fs.writeFileSync(newFilePath, content, 'utf8');
             console.log(`Processed: ${newFilePath}`);
