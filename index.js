@@ -43,6 +43,12 @@ hexo.extend.console.register('zhihu', 'Run the hexo-console-zhihu plugin', {
         content = content.replace(/\$(.*?)\$/g, '$$$$$1$$$$'); // $e$ -> $$e$$
         content = content.replace(/DOUBLE_DOLLAR_TEMP_TAG/g, '$$$$'); // DOUBLE_DOLLAR_TEMP_TAGeDOUBLE_DOLLAR_TEMP_TAG -> $$e$$
 
+        // process image link
+        content = content.replace(/!{1}\[([^\[\]]*)\]\((\S*)\s?(?:".*")?\)/g,
+            function (_, label, path) {
+                return `(image-${label}-${path})`;
+            });
+
         const newFilePath = path.join(postsDir, `${postBaseName}.zhihu.md`);
 
         fs.writeFileSync(newFilePath, content, 'utf8');
