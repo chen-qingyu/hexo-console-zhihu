@@ -8,7 +8,7 @@
 
 2. 带有图片链接的 Markdown 文件会导入失败比如 `![label](path/image.png)`。hexo-console-zhihu 会自动将图片链接替换为可以成功导入的文字比如 `(image-label-path/image.png)`。
 
-3. 顺便，去除了 front-matter ，方便导入后直接发布。
+3. 每次需要手动去除 front-matter 有点麻烦，hexo-console-zhihu 帮你自动去除 front-matter 方便导入后直接发布。
 
 安装：
 
@@ -22,7 +22,7 @@ npm install hexo-console-zhihu
 hexo zhihu <可选指定的文章名>
 ```
 
-比如 `hexo zhihu my_post` 就会在文章同级目录下生成一个 my_post.zhihu.md 文件，去除了 front-matter 并替换了公式格式，可以直接导入知乎。
+比如 `hexo zhihu my_post` 就会在文章同级目录下生成一个 my_post.zhihu.md 文件，方便直接导入知乎文章编辑器。
 
 如果不指定文章名，默认处理所有文章。
 
