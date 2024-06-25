@@ -11,6 +11,8 @@
     "url": "git+https://github.com/chen-qingyu/hexo-console-zhihu.git"
   },
   "keywords": [
+    "hexo",
+    "plugin",
     "console",
     "markdown",
     "zhihu"
