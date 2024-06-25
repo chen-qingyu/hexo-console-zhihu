@@ -21,29 +21,31 @@ hexo.extend.console.register('zhihu', 'Run the hexo-console-zhihu plugin', {
             return;
         }
 
-        if (path.extname(post) === '.md') {
-            const postBaseName = path.basename(post, '.md');
-
-            // if an article is specified, skip other articles
-            if (specificPost && specificPost !== postBaseName) {
-                return;
-            }
-
-            const filePath = path.join(postsDir, post);
-            let content = fs.readFileSync(filePath, 'utf8');
-
-            // remove front-matter
-            content = front.parse(content.replace(/\r\n/g, '\n'))._content;
-
-            // replace the inline formula
-            content = content.replace(/\$\$/g, 'DOUBLE_DOLLAR_TEMP_TAG'); // $$e$$ -> DOUBLE_DOLLAR_TEMP_TAGeDOUBLE_DOLLAR_TEMP_TAG
-            content = content.replace(/\$(.*?)\$/g, '$$$$$1$$$$'); // $e$ -> $$e$$
-            content = content.replace(/DOUBLE_DOLLAR_TEMP_TAG/g, '$$$$'); // DOUBLE_DOLLAR_TEMP_TAGeDOUBLE_DOLLAR_TEMP_TAG -> $$e$$
-
-            const newFilePath = path.join(postsDir, `${postBaseName}.zhihu.md`);
-
-            fs.writeFileSync(newFilePath, content, 'utf8');
-            console.log(`Processed: ${newFilePath}`);
+        if (path.extname(post) !== '.md') {
+            return;
         }
+
+        const postBaseName = path.basename(post, '.md');
+
+        // if an article is specified, skip other articles
+        if (specificPost && specificPost !== postBaseName) {
+            return;
+        }
+
+        const filePath = path.join(postsDir, post);
+        let content = fs.readFileSync(filePath, 'utf8');
+
+        // remove front-matter
+        content = front.parse(content.replace(/\r\n/g, '\n'))._content;
+
+        // replace the inline formula
+        content = content.replace(/\$\$/g, 'DOUBLE_DOLLAR_TEMP_TAG'); // $$e$$ -> DOUBLE_DOLLAR_TEMP_TAGeDOUBLE_DOLLAR_TEMP_TAG
+        content = content.replace(/\$(.*?)\$/g, '$$$$$1$$$$'); // $e$ -> $$e$$
+        content = content.replace(/DOUBLE_DOLLAR_TEMP_TAG/g, '$$$$'); // DOUBLE_DOLLAR_TEMP_TAGeDOUBLE_DOLLAR_TEMP_TAG -> $$e$$
+
+        const newFilePath = path.join(postsDir, `${postBaseName}.zhihu.md`);
+
+        fs.writeFileSync(newFilePath, content, 'utf8');
+        console.log(`Processed: ${newFilePath}`);
     });
 });
