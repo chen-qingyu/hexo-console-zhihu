@@ -15,3 +15,5 @@ hexo zhihu <可选指定的文章名>
 比如 `hexo zhihu my_post` 就会在文章同级目录下生成一个 my_post.zhihu.md 文件，去除了 front-matter 并替换了公式格式，可以直接导入知乎。
 
 如果不指定文章名，默认处理所有文章。
+
+<del>垃圾知乎编辑器，逼得我一个写 C++ 的花了五个小时现学 JavaScript 写这玩意儿……</del>
